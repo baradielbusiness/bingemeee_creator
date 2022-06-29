@@ -167,7 +167,7 @@ const InfulencerProfile = () => {
       <div className={Styles.main}>
         <div className={Styles.coverStyleContainer}>
           <div className={Styles.coverStyleWrapper}>
-            {/* <input type="file" onChange={editCover} className={Styles.coverImageUpload}/> */}
+            <input type="file" onChange={editCover} className={Styles.coverImageUpload}/>
             <img src={coverUrl} className={Styles.coverStyleImage}/>
             <div className={Styles.coverEditIconWrapper}>
               <EditIcon title={"Edit Profile Image"} className={Styles.coverEditIcon}/>
@@ -178,7 +178,7 @@ const InfulencerProfile = () => {
         <div className={Styles.userDetailSection}>
           <div className={Styles.profileIconOuter}>
             <div className={Styles.profileIconInner} style={{ backgroundImage: `url(${profileUrl})` }}>
-              {/* <input type="file" onChange={editProfile} className={Styles.profileImageUpload}/> */}
+              <input type="file" onChange={editProfile} className={Styles.profileImageUpload}/>
               <EditIcon title={"Edit Profile Image"}/>
             </div>
           </div>
