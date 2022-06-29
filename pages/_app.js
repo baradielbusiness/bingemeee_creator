@@ -1,10 +1,9 @@
-import type { AppProps } from 'next/app';
 import Head from 'next/head'
 import ConfigProvider from '../utils/context/postContext';
 import React from "react";
 import '../styles/styles.scss'
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }) {
   return (
     <ConfigProvider>
         <Head>

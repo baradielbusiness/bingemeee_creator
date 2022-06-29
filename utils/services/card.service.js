@@ -1,48 +1,55 @@
 import axios from "axios";
 
-const baseUrl = process.env.apiBaseUrl+'posts/';
+const baseUrl = process.env.apiBaseUrl+'cards/';
 
-export const updatePost = async (post:any) => {
-    return await axios.post(baseUrl+ 'updatePost', post,
+export function getcardDetails() {
+  return axios.get(baseUrl,
     {
       headers: {
         Authorization: 'Bearer ' + sessionStorage.getItem('token'),
         infLoginAs: ''+sessionStorage.getItem('loginAs'),
         userRole: ''+sessionStorage.getItem('role')
       }
-    }).catch(e => console.log(e));
+    })
 }
 
-export function getAllpost() {
-  return axios.get(baseUrl, 
+
+export function updateCardDetails(postData) {
+  return axios.patch(baseUrl,
+    postData,
     {
       headers: {
         Authorization: 'Bearer ' + sessionStorage.getItem('token'),
         infLoginAs: ''+sessionStorage.getItem('loginAs'),
         userRole: ''+sessionStorage.getItem('role')
       }
-    });
+    })
 }
 
-export const deletePost = async (uuid:any) => {
-  return await axios.delete(`${baseUrl}/deletePost/${uuid}`,
+export function deleteCardById(id) {
+  return axios.post(baseUrl + 'deleteCard',
+    {
+      id: id
+    },
     {
       headers: {
         Authorization: 'Bearer ' + sessionStorage.getItem('token'),
         infLoginAs: ''+sessionStorage.getItem('loginAs'),
         userRole: ''+sessionStorage.getItem('role')
       }
-    }).catch(e => console.log(e));
+    })
 }
 
-export const upsertPost = async(post:FormData) =>{
-  return await axios.post(baseUrl+'uploadImages', post,
+export function createCardDetails(postData) {
+  return axios.post(baseUrl,
+    postData,
     {
       headers: {
         Authorization: 'Bearer ' + sessionStorage.getItem('token'),
         infLoginAs: ''+sessionStorage.getItem('loginAs'),
-        userRole: ''+sessionStorage.getItem('role'),
-        "Content-Type": 'multipart/form-data'
+        userRole: ''+sessionStorage.getItem('role')
       }
-    }).catch(e => console.log(e));
-}   
+    })
+}
+
+

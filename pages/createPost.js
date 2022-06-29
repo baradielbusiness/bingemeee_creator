@@ -8,7 +8,7 @@ const initialState = {
       "image":""
   };
 
-function reducer(state: any, action: any) {
+function reducer(state, action) {
   switch (action.type) {
     case "fetchfromdb":
       return {
@@ -26,7 +26,7 @@ function reducer(state: any, action: any) {
   }
 }
 
-const createPost = (_props: any) => {
+const createPost = (_props) => {
   //   const [email, setEmail] = useState("");
   //   const [pass, setPass] = useState("");
   const [title, setTitle] = useState("");
@@ -35,7 +35,7 @@ const createPost = (_props: any) => {
   // const [urllist, setUrlList] = useState([]);
   const [description, setDescription] = useState("");
   const [state, dispatch] = useReducer(reducer, initialState);
-  const onChange = (e: any) => {
+  const onChange = (e) => {
     dispatch({ type: "generic", field: e.target.name, value: e.target.value });
   };
 

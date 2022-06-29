@@ -54,7 +54,7 @@ export default function InfluencerHeader({ children, Styles, ...props }) {
           <Image src={Logo} className={Styles.logo}/>
         </div>
         {profileIcon && <div className={Styles.profileIconWrapper}>
-          <Image src={profileIcon} width={"24px"} height={"24px"}  onClick={(e) => setShowProfileMenu(true)}/>
+          <Image src={profileIcon} width={"24px"} height={"24px"}  onClick={(e) => setShowProfileMenu(!showProfileMenu)}/>
         </div>}
         {showProfileMenu && <div className={Styles.profileMenuWrapper}>
           <ul>

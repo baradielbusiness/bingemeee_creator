@@ -2,7 +2,7 @@ import axios from "axios";
 
 const baseUrl = process.env.apiBaseUrl+'subscription/';
 
-export const setSubscription = async (post:any) => {
+export const setSubscription = async (post) => {
   return await axios.post(baseUrl+ 'update', post,
   {
     headers: {
@@ -13,7 +13,7 @@ export const setSubscription = async (post:any) => {
   }).catch(e => console.log(e));
 }
 
-export const getSubscriptionDetails = async (influencer: any) => {
+export const getSubscriptionDetails = async (influencer) => {
   return await axios.get(baseUrl+ '?influencer=' + influencer,
   {
     headers: {
@@ -24,7 +24,7 @@ export const getSubscriptionDetails = async (influencer: any) => {
   }).catch(e => console.log(e));
 }
 
-export const disableSubscriptionStatus = async (post:any) => {
+export const disableSubscriptionStatus = async (post) => {
   return await axios.post(baseUrl+ 'disable', post,
   {
     headers: {

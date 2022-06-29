@@ -17,7 +17,7 @@ export default function UploadBox(props) {
         Array.from(event.target.files).map((fl)=> {
           flnames.push(fl.name)
         })
-        setfileNames(flnames);
+        //setfileNames(flnames);
         props.updateFile(event);
       }
     //}

@@ -2,7 +2,7 @@ import axios from "axios";
 
 const baseUrl = process.env.apiBaseUrl;
 
-export function login(username: string, password: string) {
+export function login(username, password) {
     return axios.post(baseUrl+ 'auth/login',{
       name:username,
       password: password
@@ -26,7 +26,7 @@ export function getInfluencers() {
 
 }
 
-export function changePassword (data: any) {
+export function changePassword (data) {
   return axios.post(`${baseUrl}auth/changepassword`, 
   data,
   {
@@ -61,7 +61,7 @@ export function getInfluencerProfile() {
 }
 
 
-export function uploadPhoto (formdata: any){
+export function uploadPhoto (formdata){
   return axios.post(`${baseUrl}users/uploadphoto`, 
   formdata,
   {
@@ -73,7 +73,7 @@ export function uploadPhoto (formdata: any){
   });
 }
 
-export function uploadCoverPhoto (formdata: any){
+export function uploadCoverPhoto (formdata){
   console.log("uploadCoverPhoto")
   return axios.post(`${baseUrl}users/uploadCoverphoto`, 
   formdata,
@@ -85,13 +85,13 @@ export function uploadCoverPhoto (formdata: any){
     }
   });
 }
-export function userLogin(email:string) {
+export function userLogin(email) {
   return axios.post(baseUrl+ 'auth/userLogin',{
       "email": email,
     });
 }
 
-export function signup(name: string,email:string, password: string, fullName: string) {
+export function signup(name,email, password, fullName) {
     return axios.post(baseUrl+ 'auth/register',{
         "name": name,
         "email": email,
@@ -100,21 +100,21 @@ export function signup(name: string,email:string, password: string, fullName: st
       });
 }
 
-export function verifySignupOTP(otp: string, email: string) {
+export function verifySignupOTP(otp, email) {
   return axios.post(baseUrl+ 'auth/registerVerifyOtp',{
       otp,
       email,
     });
 }
 
-export function verifyOTP(otp: string, email: string) {
+export function verifyOTP(otp, email) {
   return axios.post(baseUrl+ 'auth/VerifyOtp',{
       otp,
       email,
     });
 }
 
-export async function userSignUp(name: string,email:string, mobile:string, influencer: string) {
+export async function userSignUp(name,email, mobile, influencer) {
   return await axios.post(baseUrl+ 'auth/userRegister',{
       name,
       email,
@@ -124,7 +124,7 @@ export async function userSignUp(name: string,email:string, mobile:string, influ
 }
 
 
-export function getHomeDetailsByUsername (query:any){
+export function getHomeDetailsByUsername (query){
   let token = ''
   if (query.token) {
     token = `&token=${query.token}`

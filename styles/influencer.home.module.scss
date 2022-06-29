@@ -201,6 +201,7 @@ $font: 'Roboto', sans-serif;
   position: absolute;
   width: 100%;
   margin-left: -20px ;
+  cursor: pointer;
 }
 .coverStyleImage {
   width: 100%;
@@ -232,7 +233,7 @@ $font: 'Roboto', sans-serif;
   @media (min-width: 1024px) {
     width: 50%;
     left: 25%;
-    margin-top: 5%;
+    margin-top: 3%;
   }
 
   h3 {
@@ -268,6 +269,12 @@ $font: 'Roboto', sans-serif;
     background-repeat: no-repeat; 
     background-size: cover; 
     border-radius: 10rem;
+    padding-top: 60px;
+    padding-left: 60px;
+    svg {
+      position: relative;
+      z-index: 0;
+    }
   }
   .userButtonWrapper {
     width: 100%;
@@ -283,7 +290,10 @@ $font: 'Roboto', sans-serif;
     margin-top: 200px;
   }
   @media (min-width: 1024px) {
-    margin-top: 5%;
+    margin-top: 20%;
+  }
+  @media (min-width: 1440px) {
+    margin-top: 15%;
   }
   .subHeading{
     font-weight: bold;
@@ -308,29 +318,24 @@ $font: 'Roboto', sans-serif;
       margin: 1rem 1rem 1rem;
       min-width: 220px;
     }
-    .chatContent {
+    .cardAddWrapper{
+      text-align: center;
+      padding-top: 25px;
+    }
+    .cardFieldPrice {
+      width: 60px;
+    }
+    .cardFieldDesc {
       color: grey;
       font-size: 0.8rem;
       /* margin-top: -0.2rem; */
       margin: 0.5rem 0 1rem 0;
     }
-    .readMode {
-      border: 0px;
-      background: transparent;
-      font-size: 0.9rem;
-      margin-left: -10px;
-      padding: 2px 5px;
-    }
-    textarea.readMode {
-      color: grey;
-      font-size: 0.8rem;
-      padding: 0px 5px;
-    }
     .align {
       padding:0.2rem 0.5rem;
       align-self:flex-end;
     }
-    .chattitle {
+    .cardFieldTitle {
       font-size: 0.9rem;
       margin: 0.5rem 0 0.2rem 0;
     }
@@ -343,4 +348,72 @@ $font: 'Roboto', sans-serif;
       margin: 0;
     }
   }
+}
+.subscriptionHeadingWrapper h5{
+  width: 90%;
+  margin: 0px;
+  margin-top: 5px;
+  padding: 0px;
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(136, 133, 133);
+}
+
+.subscriptionHeadingWrapper span {
+  margin-top: -2px;
+  position: absolute;
+}
+.subscriptionButtonWrapper {
+  text-align: right;
+}
+.subscriptionPrice {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 16px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.subscriptionDiscount {
+  padding: 2px;
+  font-size: 12px;
+  border: 2px solid rgb(78, 195, 78);
+  border-radius: 2px;
+  width: 100px;
+  text-align: center;
+  color: rgb(78, 195, 78);
+}
+
+.subscriptionDesc {
+  margin-top: 10px;
+  font-size: 10px;
+  color: rgb(136, 133, 133);
+}
+.coverEditIconWrapper {
+  position: relative;
+  width: 10%;
+  top: -140px;
+  left: 20px;
+  z-index: 0;
+  text-align: left;
+  padding-right: 10px;
+  svg {
+    fill: #000 !important;
+  }
+}
+.coverImageUpload {
+  position: absolute;
+  width: 100%;
+  height: 320px;
+  opacity: 0;
+  z-index: 1;
+}
+.profileImageUpload {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  width: 90px;
+  height: 90px;
+  left: -60px;
+  top: -60px
 }
