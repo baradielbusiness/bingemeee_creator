@@ -9,7 +9,6 @@ import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ErrorMsg from "../../components/ErrorMsg";
-import { Style } from "@mui/icons-material";
 const InfulencerProfile = () => {
   const router = useRouter(); 
   const [username, setUsername] = useState();
@@ -82,6 +81,7 @@ const InfulencerProfile = () => {
       setEditable(editableArray)
     }
   }
+  console.log(state)
   const AddMoreCard = (e) => {
     let cardListNew = []
     const newCard = {
@@ -128,8 +128,7 @@ const InfulencerProfile = () => {
     fetchAllDetails()
   }
   const editProfile = (event) => {
-    e.preventDefault()
-    setfileName(event.target.files[0].name);
+    event.preventDefault()
     const file = event.target.files[0];
     if (file) {
       var reader = new FileReader();

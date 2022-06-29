@@ -13,6 +13,7 @@ const InfulencerHome = () => {
   const [influencerState, setInfluencerState] = useState({username: '', totalRevenue: 0, paid: 0, balance: 0, transactions: [], graph: ''});
   const [pendingTransaction, setPendingTransaction] = useState([])
   const [otherTransaction, setOtherTransaction] = useState([])
+  const [displayPage, setDisplayPage] = useState(false)
   const fetchAllDetails = async () => {
     const paymentDetails = await getpaymentdetailsByUser();
     if (paymentDetails.status == 200 && paymentDetails.data.username) {
@@ -26,7 +27,16 @@ const InfulencerHome = () => {
           graph: paymentDetails.data.graph
         }
       )
-      console.log(paymentDetails.data.transactions)
+      const pendingCardTransactions = paymentDetails.data.transactions.filter(trans => trans.isCard == true && trans.status=='pending')
+      const otherTransactions = paymentDetails.data.transactions.filter(trans => ((trans.isCard == true && trans.status !='pending') || (trans.isCard == false) ))
+      if (pendingCardTransactions.length > 0) {
+        setPendingTransaction(pendingCardTransactions)
+      }
+      if (otherTransactions.length > 0) {
+        setOtherTransaction(otherTransactions)
+      }
+      setDisplayPage(true)
+        
       return true
     }
     else {
@@ -36,24 +46,15 @@ const InfulencerHome = () => {
 
   useEffect(async () => {
     const status = await fetchAllDetails();
-    if (influencerState.username) {
-      const pendingCardTransactions = influencerState.transactions.filter(trans => trans.isCard == true && trans.status=='pending')
-      const otherTransactions = influencerState.transactions.filter(trans => trans.isCard != true && trans.status !='pending' )
-      if (pendingCardTransactions.length > 0) {
-        setPendingTransaction(pendingCardTransactions)
-      }
-      if (otherTransactions.length > 0) {
-        setOtherTransaction(otherTransactions)
-      }
-    }
+    
     
     if (!status) {
       router.push('/login')
     }
-  }, [influencerState.username])
+  }, [])
   return (
     <Layout>
-      <div className={Styles.earnings}>
+      {displayPage && <><div className={Styles.earnings}>
           <span>₹</span> {influencerState.totalRevenue}
       </div>
       <div className={Styles.incomePaidWrapper}>
@@ -102,7 +103,7 @@ const InfulencerHome = () => {
         </div>
         {otherTransaction.length >0 && <Transactions transactions={otherTransaction} type="other" />}
         {otherTransaction.length ==0 && <div>No transaction for past 1 week</div>}
-      </div>
+      </div></>}
 
     </Layout>
   )

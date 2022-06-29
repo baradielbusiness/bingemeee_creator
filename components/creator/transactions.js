@@ -18,6 +18,7 @@ const Transactions = ({transactions, type}) => {
   const [isStatusChanged, setStatusChanged] = useState(false);
   const [newStatus, setNewStatus] = useState('');
   const handleTransactionStatus = (e, trans, transactionsType) => {
+    console.log(transactionsType)
     e.preventDefault()
     
     if (transactionsType != 'Card') { return false }
@@ -33,15 +34,12 @@ const Transactions = ({transactions, type}) => {
   const saveSatus = async () => {
     // save the status to backend..call the service here
     setStatusCnfModalOpen(false)
-    console.log(isStatusChanged)
-    console.log(currentTransaction)
     if (isStatusChanged && currentTransaction.id) {
       await updatePaymentStatus(currentTransaction.id, newStatus);
       router.reload()
     }
     setStatusChanged(false);
     setCurrentTransaction(false)
-   // await fetchAllDetails();
   }
 
   const hideUserDetailsModal = () => {
