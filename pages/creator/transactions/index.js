@@ -88,7 +88,7 @@ const CreatorTransaction = () => {
         onChange={handleFilter}
       >
         <option value={''}>Select Type</option>
-        <option value={'all-success'}>Select Type</option>
+        <option value={'all-success'}>Select All</option>
         <option value={'cards-pending'}>Cards Pending</option>
         <option value={'cards-success'}>Cards Success</option>
         <option value={'post-success'}>Post</option>
