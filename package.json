@@ -1,0 +1,42 @@
+{
+  "name": "nicetry",
+  "version": "0.1.1",
+  "private": true,
+  "scripts": {
+    "dev": "export NODE_OPTIONS=--openssl-legacy-provider && next dev",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && next build",
+    "export": "next export",
+    "start": "export NODE_OPTIONS=--openssl-legacy-provider && next start",
+    "codegen:dev": "nodemon -e ts --ignore generated -x ts-node --project tsconfig.node.json ./scripts/codegen_dev.ts",
+    "codegen:staging": "ts-node --project tsconfig.node.json ./scripts/codegen_staging.ts",
+    "codegen:prod": "ts-node --project tsconfig.node.json ./scripts/codegen_prod.ts",
+    "migrate:dev": "nodemon -e ts --ignore generated -x ts-node --project tsconfig.node.json ./scripts/migrate_dev.ts",
+    "migrate:staging": "ts-node --project tsconfig.node.json ./scripts/migrate_staging.ts",
+    "migrate:prod": "ts-node --project tsconfig.node.json ./scripts/migrate_prod.ts"
+  },
+  "dependencies": {
+    "@emotion/cache": "^11.9.3",
+    "@emotion/react": "^11.9.3",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.9.3",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.8.6",
+    "@mui/system": "^5.8.6",
+    "@svgr/webpack": "^6.2.1",
+    "@types/react": "^18.0.14",
+    "axios": "^0.23.0",
+    "chart.js": "^3.8.0",
+    "cookie": "^0.5.0",
+    "next": "^11.1.2",
+    "next-seo": "^5.4.0",
+    "nookies": "^2.5.0",
+    "react": "^17.0.2",
+    "react-cookie": "^4.1.1",
+    "react-dom": "^17.0.2",
+    "sass": "^1.39.2",
+    "swr": "^1.1.2",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.3.2",
+    "yup": "^0.32.11"
+  }
+}
