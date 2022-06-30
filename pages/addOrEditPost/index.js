@@ -177,7 +177,6 @@ const addOrEditPost = (_props) => {
       .then(async (valid) => {
         if (valid) {
           setErrors([]);
-          resetValues();
           setIsLoading(true)
           if (Array.from(imageUploads).length > 0) {
             let formdata = new FormData();
@@ -211,9 +210,14 @@ const addOrEditPost = (_props) => {
               isPaid: state.isPaid,
               id: state._id
             })
-            if (data.status == 200) {
+            if (data.status == 200 && !data.data.status) {
               setIsLoading(false)
               setIsSuccess(true)
+              resetValues()
+            }
+            else if(data.data.status=="error") {
+              setIsLoading(false)
+              setErrors([data.data.message])
             }
             else {
               setIsLoading(false)

@@ -10,7 +10,7 @@ import Transactions from "../../components/creator/transactions"
 
 const InfulencerHome = () => {
   const router = useRouter();
-  const [influencerState, setInfluencerState] = useState({username: '', totalRevenue: 0, paid: 0, balance: 0, transactions: [], graph: ''});
+  const [influencerState, setInfluencerState] = useState({username: '', totalRevenue: 0, paid: 0, balance: 0, transactions: [], transactionsDates: {start: '', end: ''}, graph: ''});
   const [pendingTransaction, setPendingTransaction] = useState([])
   const [otherTransaction, setOtherTransaction] = useState([])
   const [displayPage, setDisplayPage] = useState(false)
@@ -24,6 +24,7 @@ const InfulencerHome = () => {
           paid: paymentDetails.data.paid,
           balance: paymentDetails.data.balance,
           transactions: paymentDetails.data.transactions,
+          transactionsDates: paymentDetails.data.transactionsDates,
           graph: paymentDetails.data.graph
         }
       )
@@ -46,8 +47,6 @@ const InfulencerHome = () => {
 
   useEffect(async () => {
     const status = await fetchAllDetails();
-    
-    
     if (!status) {
       router.push('/login')
     }
@@ -83,7 +82,7 @@ const InfulencerHome = () => {
       </div>
       <div>
         <div className={Styles.Heading}>Income</div>
-        <div className={Styles.ChartSubheading}>01/05 - 07/05</div>
+        <div className={Styles.ChartSubheading}>{influencerState.transactionsDates.start} - {influencerState.transactionsDates.end}</div>
         <Chart data={influencerState.graph}/>
       </div>
       <div>
