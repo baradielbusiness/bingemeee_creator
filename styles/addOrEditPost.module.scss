@@ -27,3 +27,12 @@
   .video{
       width: 100%;
   }
+
+  .imageDisplay {
+    max-width: 300px;
+    img {
+        width: auto;
+        max-height: 150px;
+        max-width: 150px;
+    }
+  }

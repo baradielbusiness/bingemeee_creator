@@ -24,7 +24,7 @@ export default function About() {
     if (sessionStorage.getItem('token')) {
       fetchAllPosts();
     } else {
-      router.push('./login');
+      router.push('/login');
     }
   }, [])
 
@@ -34,7 +34,7 @@ export default function About() {
     setImageList(result.data.images);
     setVideoList(result.data.videos);
   } catch(err){
-    router.push('./login');
+    router.push('/login');
   }
   }
   

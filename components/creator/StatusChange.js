@@ -17,6 +17,9 @@ return (
       <span className={styles.modalValue}>{transaction.phone}</span>
 
       {transaction.comments && transaction.comments !== '' && <>
+        <span className={styles.labelModal}><b>Social URL</b></span>
+        <a href={transaction.socialUrl} className={styles.modalValue} target="_new">{transaction.socialUrl}</a>
+
         <span className={styles.labelModal}><b>Comments</b></span>
         <span className={styles.modalValue}>{transaction.comments}</span>
 

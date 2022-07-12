@@ -50,7 +50,7 @@ const InfulencerProfile = () => {
         setUsername(sessionStorage.getItem('name'))
       }
     } else {
-      router.push('./login');
+      router.push('/login');
     }
   }, [])
   const changeToEditMode = (e, index, data) => {

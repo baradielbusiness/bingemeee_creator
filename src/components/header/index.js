@@ -20,7 +20,7 @@ export default function Header() {
   const clearUserDetails = () => {
     logout();
     sessionStorage.clear();
-    router.push('./login');
+    router.push('/login');
   }
 
   return (

@@ -116,7 +116,7 @@ const addOrEditPost = (_props) => {
         }
       }
     } else {
-      router.push('./login');
+      router.push('/login');
     }
 
     return () => {
@@ -288,7 +288,7 @@ const addOrEditPost = (_props) => {
 
   const DisplayImages = () => {
     return images.map((imgSrc, index) => {
-      return <img src={imgSrc} key={`${index}-image`} alt={'image'} width="300" />
+      return <img src={imgSrc} key={`${index}-image`} alt={'image'} />
     })
   }
   const DisplayVideos = () => {
@@ -316,10 +316,6 @@ const addOrEditPost = (_props) => {
             
             {/* </div> */}
             <UploadBox updateFile={(e) => updloadFile(e)}></UploadBox>
-            <div className="row">
-              {images.length > 0 && isImage && <DisplayImages />}
-              {images.length > 0 && !isImage && <DisplayVideos />}
-            </div>
             <div className="row">
               <div className="col-25">
                 <label htmlFor="title">Title</label>
@@ -398,6 +394,10 @@ const addOrEditPost = (_props) => {
               </button>}
             </div>
           </div>
+          <div className={styles.imageDisplay + " row"}>
+              {images.length > 0 && isImage && <DisplayImages />}
+              {images.length > 0 && !isImage && <DisplayVideos />}
+            </div>
         </div>
 
       </>

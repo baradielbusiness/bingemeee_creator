@@ -22,7 +22,7 @@ export default function InfluencerHeader({ children, Styles, ...props }) {
     logout();
     setShowProfileMenu(false)
     sessionStorage.clear();
-    router.push('./login');
+    router.push('/login');
   }
   const handleChangePassword = () => {
     setShowProfileMenu(false)

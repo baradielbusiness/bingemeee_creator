@@ -10,7 +10,7 @@ import Transactions from "../../components/creator/transactions"
 
 const InfulencerHome = () => {
   const router = useRouter();
-  const [influencerState, setInfluencerState] = useState({username: '', totalRevenue: 0, paid: 0, balance: 0, transactions: [], transactionsDates: {start: '', end: ''}, graph: ''});
+  const [influencerState, setInfluencerState] = useState({username: '', totalRevenue: 0, paid: 0, balance: 0, commission : 0, transactions: [], transactionsDates: {start: '', end: ''}, graph: ''});
   const [pendingTransaction, setPendingTransaction] = useState([])
   const [otherTransaction, setOtherTransaction] = useState([])
   const [displayPage, setDisplayPage] = useState(false)
@@ -25,7 +25,8 @@ const InfulencerHome = () => {
           balance: paymentDetails.data.balance,
           transactions: paymentDetails.data.transactions,
           transactionsDates: paymentDetails.data.transactionsDates,
-          graph: paymentDetails.data.graph
+          graph: paymentDetails.data.graph,
+          commission: paymentDetails.data.commission
         }
       )
       const pendingCardTransactions = paymentDetails.data.transactions.filter(trans => trans.isCard == true && trans.status=='pending')
@@ -44,6 +45,15 @@ const InfulencerHome = () => {
       return false
     }
   }
+
+  const nextSundayDay = () => {
+    const now = new Date();    
+    now.setDate(now.getDate() + ((7-now.getDay())) % 7)
+    const nextSun = `${now.getDate()}/${now.getMonth()}`
+    return nextSun;
+  }
+
+  
 
   useEffect(async () => {
     const status = await fetchAllDetails();
@@ -68,6 +78,7 @@ const InfulencerHome = () => {
             </div>
           </div>
         </div>
+        {influencerState.commission !== 0 && <>Commission : {influencerState.commission}</>}
         <div className={Styles.pageButton}>
           <div className={Styles.buttonTextWrapper}>
             <div className={Styles.iconSellWrapper}>
@@ -78,6 +89,7 @@ const InfulencerHome = () => {
               <div className={Styles.buttonText}>{influencerState.paid}</div>
             </div>
           </div>
+          {<>Next Pay : {nextSundayDay()}</>}
         </div>
       </div>
       <div>
