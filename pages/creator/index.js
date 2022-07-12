@@ -66,6 +66,7 @@ const InfulencerHome = () => {
       {displayPage && <><div className={Styles.earnings}>
           <span>₹</span> {influencerState.totalRevenue}
       </div>
+      {influencerState.commission !== 0 && <div>Commission : {influencerState.commission}</div>}
       <div className={Styles.incomePaidWrapper}>
         <div className={Styles.pageButton}>
           <div className={Styles.buttonTextWrapper}>
@@ -78,7 +79,6 @@ const InfulencerHome = () => {
             </div>
           </div>
         </div>
-        {influencerState.commission !== 0 && <>Commission : {influencerState.commission}</>}
         <div className={Styles.pageButton}>
           <div className={Styles.buttonTextWrapper}>
             <div className={Styles.iconSellWrapper}>
@@ -89,7 +89,7 @@ const InfulencerHome = () => {
               <div className={Styles.buttonText}>{influencerState.paid}</div>
             </div>
           </div>
-          {<>Next Pay : {nextSundayDay()}</>}
+          {<div className={Styles.nextPay}>Next Pay : {nextSundayDay()}</div>}
         </div>
       </div>
       <div>
